@@ -12,14 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.WebSocket
-import okhttp3.WebSocketListener
 import org.weylus.weylus_android.R
 import org.weylus.weylus_android.databinding.FragmentTransformBinding
 import org.weylus.weylus_android.databinding.ItemTransformBinding
-import org.weylus.weylus_android.websocket.EchoWebSocketListener
 
 /**
  * Fragment that demonstrates a responsive layout pattern where the format of the content
@@ -35,26 +30,11 @@ class TransformFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-
-    private lateinit var webSocket: WebSocket
-    private lateinit var client: OkHttpClient
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        client = OkHttpClient()
-        val request = Request.Builder().url("ws://192.168.1.13:9001").build()
-        val listener: WebSocketListener = EchoWebSocketListener()
-        webSocket = client.newWebSocket(request, listener);
-
-        webSocket.send("hello weylus!")
-
-        client.dispatcher.executorService.shutdown()
-
-
         val transformViewModel = ViewModelProvider(this).get(TransformViewModel::class.java)
         _binding = FragmentTransformBinding.inflate(inflater, container, false)
         val root: View = binding.root

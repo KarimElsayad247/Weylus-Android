@@ -8,7 +8,7 @@ import okhttp3.WebSocketListener
 class EchoWebSocketListener: WebSocketListener() {
     override fun onMessage(webSocket: WebSocket, text: String) {
         Log.i("WEBSOCKET", "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-        Log.i("WEBSOCKET", "text")
+        Log.i("WEBSOCKET", text )
         super.onMessage(webSocket, text)
     }
 
