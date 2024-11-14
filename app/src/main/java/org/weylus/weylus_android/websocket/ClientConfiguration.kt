@@ -6,23 +6,23 @@ import kotlinx.serialization.*
 data class ClientConfiguration(
 
     @SerialName("uinput_support")
-    val uinputSupport: Boolean,
+    var uinputSupport: Boolean,
 
     @SerialName("capturable_id")
-    val capturableId: Int,
+    var capturableId: Int,
 
     @SerialName("capture_cursor")
-    val captureCursor: Boolean,
+    var captureCursor: Boolean,
 
     @SerialName("max_width")
-    val maxWidth: Int,
+    var maxWidth: Int,
 
     @SerialName("max_height")
-    val maxHeight: Int,
+    var maxHeight: Int,
 
     @SerialName("client_name")
-    val clientName: String?,
+    var clientName: String?,
 
     @SerialName("frame_rate")
-    val frameRate: Double,
+    var frameRate: Double,
 )

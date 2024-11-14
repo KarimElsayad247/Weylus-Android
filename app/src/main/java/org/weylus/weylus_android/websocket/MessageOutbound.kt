@@ -10,11 +10,11 @@ interface MessageOutbound {
 
     fun message(): String
 
-    class PointerEvent: MessageOutbound {
+    class PointerOutboundEvent(private val pointerEvent: PointerEvent): MessageOutbound {
         override fun message(): String {
-            TODO("Not yet implemented")
+            val pointerEventJson = Json.encodeToString(pointerEvent)
+            return "{\"PointerEvent\": $pointerEventJson}"
         }
-
     }
 
     class WheelEvent: MessageOutbound {
@@ -64,7 +64,5 @@ interface MessageOutbound {
         override fun message(): String {
             return "\"ChooseCustomInputAreas\""
         }
-
     }
-
 }

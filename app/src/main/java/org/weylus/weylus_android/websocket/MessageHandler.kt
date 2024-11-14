@@ -10,11 +10,11 @@ class MessageHandler {
     val TAG = "MessageHandler"
 
     fun handle(message: String) {
-        Log.i(TAG, "Handling message: $message")
+//        Log.i(TAG, "Handling message: $message")
     }
 
     fun handle(message: ByteString) {
-        Log.i(TAG, "Handling message: $message")
+//        Log.i(TAG, "Handling message: $message")
     }
 
 }

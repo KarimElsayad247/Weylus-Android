@@ -34,4 +34,8 @@ class WeylusWebsocketClient {
     fun sendConfig(clientConfig: ClientConfiguration) {
         webSocket?.send(MessageOutbound.Config(clientConfig).message())
     }
+
+    fun sendPointerEvent(pointerEvent: PointerEvent) {
+        webSocket?.send(MessageOutbound.PointerOutboundEvent(pointerEvent).message())
+    }
 }
