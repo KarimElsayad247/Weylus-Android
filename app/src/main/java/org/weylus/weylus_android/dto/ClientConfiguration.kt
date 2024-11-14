@@ -1,4 +1,4 @@
-package org.weylus.weylus_android.websocket
+package org.weylus.weylus_android.dto
 
 import kotlinx.serialization.*
 

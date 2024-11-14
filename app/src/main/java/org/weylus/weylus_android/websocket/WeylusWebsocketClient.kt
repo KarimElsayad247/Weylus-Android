@@ -4,8 +4,10 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import org.weylus.weylus_android.dto.ClientConfiguration
+import org.weylus.weylus_android.dto.PointerEvent
 
-class WeylusWebsocketClient {
+object WeylusWebsocketClient {
     private val DEFAULT_PORT = 1701
 
     private var webSocket: WebSocket? = null

@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import org.weylus.weylus_android.databinding.FragmentTransformBinding
 import org.weylus.weylus_android.websocket.ButtonType
-import org.weylus.weylus_android.websocket.ClientConfiguration
-import org.weylus.weylus_android.websocket.PointerEvent
+import org.weylus.weylus_android.dto.ClientConfiguration
+import org.weylus.weylus_android.dto.PointerEvent
 import org.weylus.weylus_android.websocket.WeylusWebsocketClient
 import java.time.Instant
 
@@ -23,7 +23,7 @@ class TransformFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val client = WeylusWebsocketClient()
+    private val client = WeylusWebsocketClient
 
     private val motionEventTypesMapping: Map<Int, String> = mapOf(
         MotionEvent.ACTION_DOWN to "pointerdown",

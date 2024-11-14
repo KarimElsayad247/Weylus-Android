@@ -2,6 +2,8 @@ package org.weylus.weylus_android.websocket
 
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import org.weylus.weylus_android.dto.ClientConfiguration
+import org.weylus.weylus_android.dto.PointerEvent
 
 /**
  * Messages going out from the app to the server
