@@ -4,6 +4,7 @@ import kotlinx.serialization.*
 
 @Serializable
 data class ClientConfiguration(
+
     @SerialName("uinput_support")
     val uinputSupport: Boolean,
 
