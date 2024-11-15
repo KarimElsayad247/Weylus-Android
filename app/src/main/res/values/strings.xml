@@ -24,4 +24,8 @@
     <string name="message_to_send">Message to send</string>
     <string name="ip">IP</string>
     <string name="connect">Connect</string>
+    <string name="port">Port</string>
+    <string name="_1701">1701</string>
+    <string name="textview">TextView</string>
+    <string name="disconnect">Disconnect</string>
 </resources>

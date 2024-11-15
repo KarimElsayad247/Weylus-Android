@@ -1,5 +1,6 @@
 package org.weylus.weylus_android.websocket
 
+import android.util.Log
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -8,36 +9,57 @@ import org.weylus.weylus_android.dto.ClientConfiguration
 import org.weylus.weylus_android.dto.PointerEvent
 
 object WeylusWebsocketClient {
-    private val DEFAULT_PORT = 1701
+    var port = "1701"
+    var ip = ""
 
     private var webSocket: WebSocket? = null
 
-    fun connect(ip: String, port: Int = DEFAULT_PORT) {
+    private val TAG = "WeylusWebsocketClient"
+
+    // These messages never change, so avoid creating new objects to minimize garbage
+    // collection overhead.
+    private val getCapturableListMessage = MessageOutbound.GetCapturableList().message()
+    private val resumeVideoMessage = MessageOutbound.ResumeVideo().message()
+    private val pauseVideoMessage = MessageOutbound.PauseVideo().message()
+
+    // Avoid creating a new object on every outbound message for these messages
+    private val clientConfigMessageCreator = MessageOutbound.Config()
+    private val pointerEventMessageCreator = MessageOutbound.PointerOutboundEvent()
+
+    fun connect() {
+        Log.i(TAG, "Connecting to $ip:$port")
         val client = OkHttpClient()
-        val url = "ws://${ip}:${port}/ws"
+        val url = "ws://192.168.1.13:1701/ws"
         val request = Request.Builder().url(url).build()
         val listener: WebSocketListener = WeylusWebsocketListener()
         webSocket = client.newWebSocket(request, listener)
         client.dispatcher.executorService.shutdown()
     }
 
+    fun disconnect() {
+        Log.i(TAG, "Disconnecting from $ip:$port")
+        webSocket?.close(0, "Disconnected successfully")
+    }
+
     fun getCapturableList() {
-        webSocket?.send(MessageOutbound.GetCapturableList().message())
+        webSocket?.send(getCapturableListMessage)
     }
 
     fun pauseVideo() {
-        webSocket?.send(MessageOutbound.PauseVideo().message())
+        webSocket?.send(pauseVideoMessage)
     }
 
     fun resumeVideo() {
-        webSocket?.send(MessageOutbound.ResumeVideo().message())
+        webSocket?.send(resumeVideoMessage)
     }
 
     fun sendConfig(clientConfig: ClientConfiguration) {
-        webSocket?.send(MessageOutbound.Config(clientConfig).message())
+        clientConfigMessageCreator.clientConfiguration = clientConfig
+        webSocket?.send(clientConfigMessageCreator.message())
     }
 
     fun sendPointerEvent(pointerEvent: PointerEvent) {
-        webSocket?.send(MessageOutbound.PointerOutboundEvent(pointerEvent).message())
+        pointerEventMessageCreator.pointerEvent = pointerEvent
+        webSocket?.send(pointerEventMessageCreator.message())
     }
 }

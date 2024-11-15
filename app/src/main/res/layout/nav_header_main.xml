@@ -1,30 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="176dp"
-    android:background="@drawable/side_nav_bar"
-    android:gravity="bottom"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="bottom">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/nav_header_desc"
-        android:paddingTop="8dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+    <EditText
+        android:id="@+id/ipTextField"
+        android:layout_width="168dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="44dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/ip"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="@string/nav_header_title" />
+    <Button
+        android:id="@+id/connectButton"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/connect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/disconnectButton"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/disconnect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toEndOf="@+id/connectButton" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/nav_header_subtitle" />
-</LinearLayout>
+        android:layout_width="31dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="44dp"
+        android:text=":"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ipTextField"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text=":" />
+
+    <EditText
+        android:id="@+id/portTextField"
+        android:layout_width="92dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="44dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/port"
+        android:inputType="text"
+        android:text="@string/_1701"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

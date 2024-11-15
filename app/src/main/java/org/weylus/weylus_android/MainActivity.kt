@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.appBarMain.toolbar)
 
+//        val sharedPreferences = getSharedPreferences("Weylus", MODE_PRIVATE)
+
         // Fab setup
         binding.appBarMain.fab?.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -48,6 +50,26 @@ class MainActivity : AppCompatActivity() {
             setupActionBarWithNavController(navController, appBarConfiguration)
             it.setupWithNavController(navController)
         }
+//
+//        val ipTextField: EditText = findViewById(R.id.ipTextField)
+//        val portTextField: EditText = findViewById(R.id.portTextField)
+//        val connectButton: Button = findViewById(R.id.connectButton)
+//        val disconnectButton: Button = findViewById(R.id.disconnectButton)
+//
+//        connectButton.setOnClickListener {
+//            Log.i("BUTTON CLICK", "BUTTON CLICK")
+//            val ip = ipTextField.text.toString()
+//            val port = portTextField.text.toString()
+//            //            sharedPreferences.edit().putString("ip", ip).apply()
+//            //            sharedPreferences.edit().putString("port", port).apply()
+//            WeylusWebsocketClient.ip = ip
+//            WeylusWebsocketClient.port = port
+//            WeylusWebsocketClient.connect()
+//        }
+//
+//        disconnectButton.setOnClickListener {
+//            WeylusWebsocketClient.disconnect()
+//        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

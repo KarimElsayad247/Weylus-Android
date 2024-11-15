@@ -72,7 +72,9 @@ class TransformFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        client.connect("192.168.1.13")
+        client.ip = "1701"
+        client.port = "192.168.1.13"
+        client.connect()
         client.getCapturableList()
         client.sendConfig(clientConfiguration)
         client.pauseVideo()

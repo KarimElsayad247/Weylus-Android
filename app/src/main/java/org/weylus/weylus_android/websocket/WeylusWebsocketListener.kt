@@ -31,11 +31,11 @@ class WeylusWebsocketListener: WebSocketListener() {
         Log.i(TAG, "Failure: ${t.message}")
     }
 
-    override fun onMessage(webSocket: WebSocket, response: String) {
-        MessageHandler().handle(response)
+    override fun onMessage(webSocket: WebSocket, text: String) {
+        MessageHandler().handle(text)
     }
 
-    override fun onMessage(webSocket: WebSocket, response: ByteString) {
-        MessageHandler().handle(response)
+    override fun onMessage(webSocket: WebSocket, bytes: ByteString) {
+        MessageHandler().handle(bytes)
     }
 }

@@ -12,7 +12,8 @@ interface MessageOutbound {
 
     fun message(): String
 
-    class PointerOutboundEvent(private val pointerEvent: PointerEvent): MessageOutbound {
+    class PointerOutboundEvent(): MessageOutbound {
+        lateinit var pointerEvent: PointerEvent
         override fun message(): String {
             val pointerEventJson = Json.encodeToString(pointerEvent)
             return "{\"PointerEvent\": $pointerEventJson}"
@@ -40,7 +41,9 @@ interface MessageOutbound {
 
     }
 
-    class Config(private val clientConfiguration: ClientConfiguration): MessageOutbound {
+    class Config: MessageOutbound {
+        lateinit var clientConfiguration: ClientConfiguration
+
         override fun message(): String {
             val configJson = Json.encodeToString(this.clientConfiguration)
             return "{\"Config\": $configJson}"
